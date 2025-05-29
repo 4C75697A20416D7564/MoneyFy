@@ -1,7 +1,7 @@
 import {
   ISpecificationsRepository,
   ISpecificationsDTO,
-} from '../repositories/ISpecificationsRepository.ts';
+} from '../repositories/ISpecificationsRepository';
 
 interface IRequest {
   name: string;

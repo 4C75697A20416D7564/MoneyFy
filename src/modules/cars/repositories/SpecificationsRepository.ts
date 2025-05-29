@@ -3,7 +3,7 @@ import { Specification } from '../model/Specification';
 import {
   ISpecificationsDTO,
   ISpecificationsRepository,
-} from './ISpecificationsRepository.ts';
+} from './ISpecificationsRepository';
 class SpecificationsRepository implements ISpecificationsRepository {
   specifications: Specification[];
 
