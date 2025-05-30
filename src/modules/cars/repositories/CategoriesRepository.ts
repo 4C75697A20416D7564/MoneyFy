@@ -8,8 +8,17 @@ import {
 class CategoriesRepository implements ICategoriesRepository {
   private category: Category[] = [];
 
-  constructor() {
+  private static INSTANCE: CategoriesRepository;
+
+  private constructor() {
     this.category = [];
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+    return CategoriesRepository.INSTANCE;
   }
 
   create({ name, description }: ICreateCategoryDTO): Category {
@@ -21,7 +30,9 @@ class CategoriesRepository implements ICategoriesRepository {
     };
     this.category.push(category);
     // Here you would typically save the category to a database
-    console.log('Category created:', category);
+    console.log('\nCategory created:\n');
+    console.log(category);
+    console.log("\n")
 
     return category;
   }

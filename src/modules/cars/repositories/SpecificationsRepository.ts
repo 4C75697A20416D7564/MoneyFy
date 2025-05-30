@@ -19,7 +19,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
       description,
       created_at: new Date(),
     });
-    console.log('Specification created successfully');
+    console.log('\nSpecification created successfully\n');
     console.log(specification);
     this.specifications.push(specification);
     return specification;

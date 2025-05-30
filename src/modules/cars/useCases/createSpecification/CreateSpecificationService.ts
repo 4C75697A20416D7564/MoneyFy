@@ -1,7 +1,7 @@
 import {
   ISpecificationsRepository,
   ISpecificationsDTO,
-} from '../repositories/ISpecificationsRepository';
+} from '../../repositories/ISpecificationsRepository';
 
 interface IRequest {
   name: string;
@@ -18,9 +18,9 @@ class CreateSpecificationService {
       this.specificationsRepository.findByName(name);
 
     if (specificationAlreadyExists) {
-      throw new Error('Specification already exists');
+      throw new Error('\nSpecification already exists\n');
     }
-    console.log('Specification created successfully');
+
     this.specificationsRepository.create({ name, description });
   }
 }
