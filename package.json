@@ -2,7 +2,6 @@
   "name": "nexus_api",
   "version": "1.0.0",
   "main": "server.ts",
-
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
@@ -16,10 +15,12 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "multer": "^2.0.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.2",
+    "@types/multer": "^1.4.12",
     "globals": "^16.2.0",
     "prettier": "^3.5.3",
     "ts-node-dev": "^2.0.0",

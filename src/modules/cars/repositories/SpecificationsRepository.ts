@@ -6,16 +6,16 @@ import {
 } from './ISpecificationsRepository';
 class SpecificationsRepository implements ISpecificationsRepository {
   specifications: Specification[];
-  private static instance: SpecificationsRepository;
+  private static INSTANCE: SpecificationsRepository;
   private constructor() {
     this.specifications = [];
   }
 
   public static getInstance(): SpecificationsRepository {
-    if (!SpecificationsRepository.instance) {
-      SpecificationsRepository.instance = new SpecificationsRepository();
+    if (!SpecificationsRepository.INSTANCE) {
+      SpecificationsRepository.INSTANCE = new SpecificationsRepository();
     }
-    return SpecificationsRepository.instance;
+    return SpecificationsRepository.INSTANCE;
   }
 
   create({ name, description }: ISpecificationsDTO): Specification {

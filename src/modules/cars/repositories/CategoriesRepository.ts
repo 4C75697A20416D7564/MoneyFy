@@ -32,7 +32,7 @@ class CategoriesRepository implements ICategoriesRepository {
     // Here you would typically save the category to a database
     console.log('\nCategory created:\n');
     console.log(category);
-    console.log("\n")
+    console.log('\n');
 
     return category;
   }
@@ -43,9 +43,7 @@ class CategoriesRepository implements ICategoriesRepository {
   }
   findByName(name: string): Category | undefined {
     // This would typically search for a category by name in a database
-    const find = this.category.find(
-      (categoria) => categoria.name === name,
-    );
+    const find = this.category.find((categoria) => categoria.name === name);
     return find;
   }
 }
