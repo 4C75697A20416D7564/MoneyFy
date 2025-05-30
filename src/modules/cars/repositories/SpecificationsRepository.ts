@@ -6,9 +6,16 @@ import {
 } from './ISpecificationsRepository';
 class SpecificationsRepository implements ISpecificationsRepository {
   specifications: Specification[];
-
-  constructor() {
+  private static instance: SpecificationsRepository;
+  private constructor() {
     this.specifications = [];
+  }
+
+  public static getInstance(): SpecificationsRepository {
+    if (!SpecificationsRepository.instance) {
+      SpecificationsRepository.instance = new SpecificationsRepository();
+    }
+    return SpecificationsRepository.instance;
   }
 
   create({ name, description }: ISpecificationsDTO): Specification {
