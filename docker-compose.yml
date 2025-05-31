@@ -1,0 +1,12 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moneyfy_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+
