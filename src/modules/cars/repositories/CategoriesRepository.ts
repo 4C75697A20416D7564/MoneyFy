@@ -30,9 +30,6 @@ class CategoriesRepository implements ICategoriesRepository {
     };
     this.category.push(category);
     // Here you would typically save the category to a database
-    console.log('\nCategory created:\n');
-    console.log(category);
-    console.log('\n');
 
     return category;
   }

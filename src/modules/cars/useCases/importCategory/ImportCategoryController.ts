@@ -9,12 +9,12 @@ class ImportCategoryController {
     this.importCategoryUseCase.execute(file);
 
     if (!file) {
-      return res.status(400).json({ error: 'File not provided' });
+      return res.status(400).json({ error: 'Arquivo Não enviado' });
     }
     // Assuming we have a service to handle the import logic
     // importCategoryService.execute(file);
 
-    return res.status(201).json({ message: 'File imported successfully' });
+    return res.status(201).json({ message: 'Arquivo Importado com Sucesso' });
   }
 }
 export { ImportCategoryController };
