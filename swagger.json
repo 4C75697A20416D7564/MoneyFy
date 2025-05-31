@@ -1,192 +1,192 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "MoneyFy API",
-        "version": "1.0.0",
-        "description": "API para gerenciamento de categorias e especifica\u00e7\u00f5es de ve\u00edculos."
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MoneyFy API",
+    "version": "1.0.0",
+    "description": "API para gerenciamento de categorias e especificações de veículos."
+  },
+  "tags": [
+    {
+      "name": "Categories",
+      "description": "Operações relacionadas às categorias de veículos"
     },
-    "paths": {
-        "/categories": {
-            "post": {
-                "summary": "Criar uma nova categoria",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Category"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Categoria criada com sucesso."
-                    },
-                    "400": {
-                        "description": "Erro na requisi\u00e7\u00e3o."
-                    }
-                },
-                "tags": [
-                    "Categories"
-                ]
-            },
-            "get": {
-                "summary": "Listar todas as categorias",
-                "responses": {
-                    "200": {
-                        "description": "Lista de categorias.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Category"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Categories"
-                ]
+    {
+      "name": "Specifications",
+      "description": "Operações relacionadas às especificações dos veículos"
+    }
+  ],
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Criar uma nova categoria",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
             }
+          }
         },
-        "/categories/import": {
-            "post": {
-                "summary": "Importar categorias via arquivo CSV",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "file": {
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Categorias importadas com sucesso."
-                    },
-                    "400": {
-                        "description": "Erro no upload do arquivo."
-                    }
-                },
-                "tags": [
-                    "Categories"
-                ]
-            }
-        },
-        "/specifications": {
-            "post": {
-                "summary": "Criar uma nova especifica\u00e7\u00e3o",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Specification"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Especifica\u00e7\u00e3o criada com sucesso."
-                    },
-                    "400": {
-                        "description": "Erro na requisi\u00e7\u00e3o."
-                    }
-                },
-                "tags": [
-                    "Specifications"
-                ]
-            },
-            "get": {
-                "summary": "Listar todas as especifica\u00e7\u00f5es",
-                "responses": {
-                    "200": {
-                        "description": "Lista de especifica\u00e7\u00f5es.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Specification"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Specifications"
-                ]
-            }
+        "responses": {
+          "201": {
+            "description": "Categoria criada com sucesso."
+          },
+          "400": {
+            "description": "Erro na requisição."
+          },
+          "500": {
+            "description": "Erro interno no servidor."
+          }
         }
+      },
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Listar todas as categorias",
+        "responses": {
+          "200": {
+            "description": "Lista de categorias.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno no servidor."
+          }
+        }
+      }
     },
-    "components": {
-        "schemas": {
-            "Category": {
+    "/categories/import": {
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Importar categorias via arquivo CSV",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
                 "type": "object",
                 "properties": {
-                    "id": {
-                        "type": "string",
-                        "example": "123e4567-e89b-12d3-a456-426614174000"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "SUV"
-                    },
-                    "description": {
-                        "type": "string",
-                        "example": "Ve\u00edculos utilit\u00e1rios esportivos."
-                    }
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
                 },
-                "required": [
-                    "name",
-                    "description"
-                ]
-            },
-            "Specification": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "example": "123e4567-e89b-12d3-a456-426614174001"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Teto solar"
-                    },
-                    "description": {
-                        "type": "string",
-                        "example": "Ve\u00edculo com teto solar panor\u00e2mico."
-                    }
-                },
-                "required": [
-                    "name",
-                    "description"
-                ]
+                "required": ["file"]
+              }
             }
-        }
-    },
-    "tags": [
-        {
-            "name": "Categories",
-            "description": "Opera\u00e7\u00f5es relacionadas \u00e0s categorias de ve\u00edculos"
+          }
         },
-        {
-            "name": "Specifications",
-            "description": "Opera\u00e7\u00f5es relacionadas \u00e0s especifica\u00e7\u00f5es dos ve\u00edculos"
+        "responses": {
+          "201": {
+            "description": "Categorias importadas com sucesso."
+          },
+          "400": {
+            "description": "Erro no upload do arquivo."
+          },
+          "500": {
+            "description": "Erro interno no servidor."
+          }
         }
-    ]
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "summary": "Criar uma nova especificação",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Specification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Especificação criada com sucesso."
+          },
+          "400": {
+            "description": "Erro na requisição."
+          },
+          "500": {
+            "description": "Erro interno no servidor."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Specifications"],
+        "summary": "Listar todas as especificações",
+        "responses": {
+          "200": {
+            "description": "Lista de especificações.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Specification"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno no servidor."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "name": {
+            "type": "string",
+            "example": "SUV"
+          },
+          "description": {
+            "type": "string",
+            "example": "Veículos utilitários esportivos."
+          }
+        },
+        "required": ["name", "description"]
+      },
+      "Specification": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174001"
+          },
+          "name": {
+            "type": "string",
+            "example": "Teto solar"
+          },
+          "description": {
+            "type": "string",
+            "example": "Veículo com teto solar panorâmico."
+          }
+        },
+        "required": ["name", "description"]
+      }
+    }
+  }
 }
