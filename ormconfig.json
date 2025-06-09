@@ -1,0 +1,8 @@
+{
+    "type": "postgres",
+    "host":"localhost",
+    "username":"docker",
+    "pasword" : "docker",
+    "database": "database_money_fy"
+
+}
