@@ -3,6 +3,9 @@
     "host":"localhost",
     "username":"docker",
     "pasword" : "docker",
-    "database": "database_money_fy"
+    "database": "database_money_fy",
+    "cli":{
+      "migrationsDir": "./src/database/migrations"
+    }
 
 }

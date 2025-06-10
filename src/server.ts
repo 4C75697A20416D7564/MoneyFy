@@ -16,5 +16,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(PORT, () => {
-  console.log('Server está alocado\nURL: localhost \nPORTA: '+PORT);
+  console.log('Server está Rodando\nURL: localhost \nPORTA: '+PORT);
 });
